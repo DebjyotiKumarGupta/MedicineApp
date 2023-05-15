@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:shiv/LoginPage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:shiv/slide_scroll.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shiv/Homepage.dart';
 
 import 'DashBoard.dart';
 import 'Medicine.dart';
@@ -47,6 +48,13 @@ class _ReportContentState extends State<ReportContent> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => HomePage()));
+                  },
+                  child: Icon(Icons.arrow_back_ios),
+                ),
                 Text(
                   "Report",
                   style: TextStyle(

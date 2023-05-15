@@ -1,32 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:connectivity/connectivity.dart';
+import 'package:shiv/homecontent.dart';
 import 'package:shiv/profile.dart';
+import 'package:shiv/slide_scroll.dart';
 
 import 'Addcontent.dart';
 import 'Medicine.dart';
 import 'ReportContent.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  bool flag;
+  HomePage({Key? key, this.flag = false}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
   int change = 0;
-  List<String> Tablets = ["Calpol 500mg Tablet"];
-  List<String> Timing = [
-    "Before Breakfast",
-    "After Food",
-    "Before Sleep",
-  ];
-  List<String> done = [
-    "Taken",
-    "Missed",
-    "Snoozed",
-    "Left",
-  ];
+  bool flag = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -84,6 +77,9 @@ class _HomePageState extends State<HomePage> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.black,
         onPressed: () {
+          setState(() {
+            flag = true;
+          });
           Navigator.push(
               context, MaterialPageRoute(builder: (content) => AddContent()));
         },
@@ -100,33 +96,24 @@ class _HomePageState extends State<HomePage> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => HomePage()));
-                  setState(() {
-                    change = 0;
-                  });
-                },
-                child: Column(
-                  children: [
-                    Icon(
-                      change == 0 ? Icons.home_rounded : Icons.home_outlined,
-                      color: Colors.blue,
-                      size: 40,
+              Column(
+                children: [
+                  Icon(
+                    change == 0 ? Icons.home_rounded : Icons.home_outlined,
+                    color: Colors.blue,
+                    size: 40,
+                  ),
+                  Text(
+                    "Home",
+                    style: TextStyle(
+                      fontSize: 12,
                     ),
-                    Text(
-                      "Home",
-                      style: TextStyle(
-                        fontSize: 12,
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
               GestureDetector(
                 onTap: () {
-                  Navigator.push(context,
+                  Navigator.pushReplacement(context,
                       MaterialPageRoute(builder: (context) => ReportContent()));
                   setState(() {
                     change = 1;
@@ -164,88 +151,36 @@ class _HomePageState extends State<HomePage> {
               children: [
                 Padding(
                   padding:
-                      const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                      const EdgeInsets.symmetric(vertical: 20, horizontal: 0),
                   child: SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       children: [
                         Container(
-                          height: 50,
-                          width: 150,
+                          height: 60,
+                          width: 400,
                           decoration: BoxDecoration(
                             color: Colors.black,
                             borderRadius: BorderRadius.circular(20),
                           ),
-                          child: Center(
-                              child: Text(
-                            "Saturday, Sep 3",
-                            style: TextStyle(color: Colors.white, fontSize: 18),
-                          )),
+                          child: Center(child: WeekDaysScroll()),
                         ),
                       ],
                     ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10),
-                  child: Text(
-                    "Morning 08:00 am",
-                    style: TextStyle(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 20,
-                    ),
-                  ),
-                ),
-                Medicine(
-                  Day: '01',
-                  Med: Tablets[0],
-                  done: done[0],
-                  Time: Timing[0],
-                ),
-                Medicine(
-                  Day: '27',
-                  Med: Tablets[0],
-                  done: done[1],
-                  Time: Timing[0],
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10),
-                  child: Text(
-                    "Afternoon 02:00 pm",
-                    style: TextStyle(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 20,
-                    ),
-                  ),
-                ),
-                Medicine(
-                  Day: '01',
-                  Med: Tablets[0],
-                  done: done[2],
-                  Time: Timing[1],
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10),
-                  child: Text(
-                    "Night 09:00 pm",
-                    style: TextStyle(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 20,
-                    ),
-                  ),
-                ),
-                Medicine(
-                  Day: '03',
-                  Med: Tablets[0],
-                  done: done[2],
-                  Time: Timing[2],
-                ),
-                Medicine(
-                  Day: '01',
-                  Med: Tablets[0],
-                  done: done[2],
-                  Time: Timing[2],
-                ),
+                flag == false
+                    ? Container(
+                        height: 500,
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                        ),
+                        child: Center(
+                          child: Image.asset('assets/box.png'),
+                        ),
+                      )
+                    : HomeContent(),
               ],
             ),
           ),

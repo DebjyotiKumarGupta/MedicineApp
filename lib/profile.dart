@@ -29,10 +29,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: GestureDetector(
                       onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => HomePage()));
+                        Navigator.pop(context);
                       },
                       child: Icon(Icons.arrow_back_ios)),
                 ),
@@ -254,7 +251,10 @@ class _ProfilePageState extends State<ProfilePage> {
                               Column(
                                 children: [
                                   CircleAvatar(
-                                    backgroundColor: Colors.red,
+                                    backgroundImage:
+                                        Image.asset('assets/profile1.png')
+                                            .image,
+                                    backgroundColor: Colors.white,
                                     radius: 28,
                                   ),
                                   Text("Dipa Luna"),
@@ -263,7 +263,10 @@ class _ProfilePageState extends State<ProfilePage> {
                               Column(
                                 children: [
                                   CircleAvatar(
-                                    backgroundColor: Colors.red,
+                                    backgroundColor: Colors.white,
+                                    backgroundImage:
+                                        Image.asset('assets/profile1.png')
+                                            .image,
                                     radius: 28,
                                   ),
                                   Text("Roz Sod.."),
@@ -272,7 +275,10 @@ class _ProfilePageState extends State<ProfilePage> {
                               Column(
                                 children: [
                                   CircleAvatar(
-                                    backgroundColor: Colors.red,
+                                    backgroundImage:
+                                        Image.asset('assets/profile1.png')
+                                            .image,
+                                    backgroundColor: Colors.white,
                                     radius: 28,
                                   ),
                                   Text("Sunny Tu.."),

@@ -187,7 +187,7 @@ class _SignUpState extends State<SignUp> {
     return SafeArea(
       child: Scaffold(
         body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
           child: SingleChildScrollView(
             scrollDirection: Axis.vertical,
             child: Container(
@@ -228,6 +228,10 @@ class _SignUpState extends State<SignUp> {
                           controller: _emailController,
                           decoration: InputDecoration(
                             hintText: "Enter your Email",
+                            prefixIcon: Icon(
+                              Icons.alternate_email,
+                              color: Colors.green,
+                            ),
                           ),
                           validator: (value) {
                             if (value!.isEmpty) {
@@ -246,6 +250,10 @@ class _SignUpState extends State<SignUp> {
                           obscureText: true,
                           controller: _passwordController,
                           decoration: InputDecoration(
+                            prefixIcon: Icon(
+                              Icons.lock_open,
+                              color: Colors.green,
+                            ),
                             suffixIcon: Icon(Icons.remove_red_eye),
                             hintText: "Enter Password",
                           ),
@@ -354,6 +362,8 @@ class _SignUpState extends State<SignUp> {
                     padding: const EdgeInsets.symmetric(vertical: 30),
                     child: GestureDetector(
                       onTap: () async {
+                        await checkInternetConnectivity();
+
                         User? user = await signInWithGoogle();
                         if (user != null) {
                           Navigator.push(
