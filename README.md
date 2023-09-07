@@ -1,16 +1,16 @@
-# shiv
+MedicineApp
+Description
+MedicineApp is a mobile application designed to help users manage their medication schedules and health information.
 
-A new Flutter project.
+Features
+ Medication schedule management, Reminder notifications, Health data tracking, etc.
 
-## Getting Started
+Launch the app on your mobile device.
+Sign in or create an account.
+Add your medications and their schedule.
+Receive reminders for taking medications.
+Track your health data, such as blood pressure and weight.
+Technologies Used
+Flutter , Dart, Firebase
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
